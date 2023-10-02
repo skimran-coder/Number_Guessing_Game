@@ -3,7 +3,10 @@ const submitButton = document.getElementById('subt');
 const previousGuesses = document.querySelector('.guesses');
 const guessesRemaining = document.querySelector('.lastResult');
 const lowOrHigh = document.querySelector('.lowOrHi');
-const reset = document.querySelector('.resetGame'); // Updated class name
+const reset = document.querySelector('.reset');
+const restart = document.querySelector('.restart')
+const playAgainBtn = document.querySelector('.playAgainBtn')
+console.log(playAgainBtn)
 // console.log(submitButton)
 // console.log(guessField)
 
@@ -57,8 +60,11 @@ form.addEventListener('submit', function (e) {
       lowOrHigh.innerHTML = `Congratulations ${secretNumber} is the correct answer.`;
       guessField.value = '';
       updateNumber();
-      resetGame();
+      // form.setAttribute('disabled', 'true');
+      guessField.setAttribute('disabled', 'true')
+      submitButton.setAttribute('disabled', 'true')
       secretNumber = randomNumber(); // Generate a new random number
+      playAgainBtn.classList.remove('display')
     } else {
       endGame();
     }
@@ -71,18 +77,42 @@ form.addEventListener('submit', function (e) {
   }
 
   function endGame() {
-    form.setAttribute('disabled', 'true');
-    reset.innerHTML = `Game Over: Restart`;
+    // form.setAttribute('disabled', 'true');
+    guessField.setAttribute('disabled', 'true')
+    submitButton.setAttribute('disabled', 'true')
+    reset.innerHTML = `Game Over:`;
+    restart.classList.remove('display')
   }
 
   function resetGame() {
-    form.removeAttribute('disabled');
+    // form.removeAttribute('disabled');
+    guessField.removeAttribute('disabled')
+    submitButton.removeAttribute('disabled')
     playGame = true;
     previousGuessArray = [];
     previousGuesses.innerHTML = '';
     reset.innerHTML = '';
     initialGuessNumber = 10;
     guessesRemaining.innerHTML = initialGuessNumber;
+    restart.classList.add('display')
+    secretNumber = randomNumber();
   }
-  reset.addEventListener('click', resetGame);
+  restart.addEventListener('click', resetGame);
 });
+
+function playAgain() {
+  // form.removeAttribute('disabled');
+    guessField.removeAttribute('disabled')
+    submitButton.removeAttribute('disabled')
+    playGame = true;
+    previousGuessArray = [];
+    previousGuesses.innerHTML = '';
+    reset.innerHTML = '';
+    initialGuessNumber = 10;
+    guessesRemaining.innerHTML = initialGuessNumber;
+    playAgainBtn.classList.add('display');
+    secretNumber = randomNumber();
+
+}
+
+playAgainBtn.addEventListener('click', playAgain)

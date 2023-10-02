@@ -93,3 +93,41 @@ h1 {
 .resetGame:hover {
   background-color: #0056b3;
 }
+
+.display{
+  display: none;
+}
+
+/* restart button  */
+
+.restart {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.restart:hover {
+  background-color: #0056b3;
+}
+
+/* playAgain button  */
+
+.playAgainBtn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.playAgainBtn:hover {
+  background-color: #0056b3;
+}
